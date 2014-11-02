@@ -52,13 +52,27 @@ public class Stack {
             i--;
         }
     }
+    public Stack sort(Stack s){
+        Stack r = new Stack();
+        while(!s.stackEmpty()){
+            int temp = s.pop();
+            while(!r.stackEmpty() && r.getTopElement() > temp)
+                s.push(r.pop());
+            r.push(temp);            
+        }
+        return r;
+    }
     public static void main(String args[]){
         Stack s = new Stack();
-        s.push(2);
         s.push(3);
+        s.push(2);
         s.display();
         s.pop();
         s.display();
+        Stack r = new Stack();
+        r = r.sort(s);
+        r.display();
+        
     }
     
 }
